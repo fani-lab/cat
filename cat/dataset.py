@@ -5,13 +5,20 @@ from functools import partial
 
 def loader(instance_path,
            label_path,
-           subset_labels,
+           subset_labels_path,
            split_labels=False,
            mapping=None):
-
-    subset_labels = set(subset_labels)
+    # subset_labels = set(subset_labels)
     labels = open(label_path)
     labels = [x.strip().lower().split() for x in labels]
+
+    subset_labels = open(subset_labels_path)
+    subset_labels = set([x.strip().lower() for x in subset_labels])
+
+
+    # for test - LADy
+    # subset_labels = {'staff', 'duck', 'confit', 'restaurant'}
+    subset_labels = {'wine', 'place'}
 
     instances = []
     for line in open(instance_path):
@@ -74,6 +81,12 @@ rest_15_test = partial(loader,
                                       "food"},
                        split_labels=True)
 
+toy_test = partial(loader,
+                   instance_path="../data/0/toy_test.txt",
+                   label_path="../data/0/toy_test_label.txt",
+                   subset_labels_path="../data/toy_train_label.txt",
+                   split_labels=True)
+
 
 def restaurants_train():
     yield rest_14_train()
@@ -81,6 +94,7 @@ def restaurants_train():
 
 
 def restaurants_test():
-    yield rest_14_test()
-    yield rest_15_test()
-    yield ganu_test()
+    yield toy_test()
+    # yield rest_14_test()
+    # yield rest_15_test()
+    # yield ganu_test()
