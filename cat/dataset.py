@@ -14,11 +14,11 @@ def loader(instance_path,
 
     subset_labels = open(subset_labels_path)
     subset_labels = set([x.strip().lower() for x in subset_labels])
-
+    # print(subset_labels)
 
     # for test - LADy
-    # subset_labels = {'staff', 'duck', 'confit', 'restaurant'}
-    subset_labels = {'wine', 'place', 'food'}
+    # # subset_labels = {'staff', 'duck', 'confit', 'restaurant'}
+    # subset_labels = {'wine', 'place', 'food'}
 
     instances = []
     for line in open(instance_path):
@@ -28,8 +28,8 @@ def loader(instance_path,
         labels = [[l.split("#")[0] for l in x] for x in labels]
 
     instances, gold = zip(*[(x, y[0]) for x, y in zip(instances, labels)
-                            if len(y) == 1 and y[0]
-                            in subset_labels])
+                            if len(y) == 1])
+                            # y[0] in subset_labels])
 
     if mapping is not None:
         gold = [mapping.get(x, x) for x in gold]
