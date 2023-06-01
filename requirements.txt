@@ -8,3 +8,4 @@ pandas
 pyconll
 scikit_learn
 spacy
+pytrec_eval
