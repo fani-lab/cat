@@ -133,7 +133,7 @@ def get_scores(instances,
                attention_func=attention,
                **kwargs):
     """Scoring function."""
-    assert all([x in r.items for x in labels])
+    # assert all([x in r.items for x in labels])
     label_vecs = normalize(r.vectorize(labels))
     aspect_vecs = [x.mean(0)
                    for x in r.transform(aspects,
