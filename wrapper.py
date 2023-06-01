@@ -76,7 +76,7 @@ def main(args):
             for d in preprocessed_test:
                 file.write(d + '\n')
 
-    train, label_list = preprocess(np.array(org_reviews)[splits['folds']['0']['train']].tolist(), False)
+    train, label_list = preprocess(np.array(org_reviews)[splits['folds']['0']['train']].tolist())
     path = f'{args.output}/{args.dname}'
     with open(f'{path}_train.txt', 'w') as file:
         for d in train:
