@@ -18,7 +18,7 @@ def loader(instance_path,
 
     # for test - LADy
     # subset_labels = {'staff', 'duck', 'confit', 'restaurant'}
-    subset_labels = {'wine', 'place'}
+    subset_labels = {'wine', 'place', 'food'}
 
     instances = []
     for line in open(instance_path):
@@ -38,7 +38,7 @@ def loader(instance_path,
     y = le.fit_transform(gold)
     label_set = le.classes_.tolist()
 
-    return instances, y, label_set
+    return instances, y, label_set, subset_labels, gold
 
 
 rest_14_test = partial(loader,

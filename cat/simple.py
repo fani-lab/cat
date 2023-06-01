@@ -148,9 +148,11 @@ def get_scores(instances,
     for vec in t:
         att = attention_func(vec, aspect_vecs, **kwargs)
         # Att = (n_heads, n_words)
+        # print("att:", att)
         z = att.dot(vec)
         # z = (n_heads, n_dim)
         x = normalize(z).dot(label_vecs.T)
         # x = (n_heads, n_labels)
+        # print(x)
         out.append(x.sum(0))
     return np.stack(out)
