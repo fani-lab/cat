@@ -5,7 +5,7 @@ import numpy as np
 
 def conll2text(paths, outpath):
     """Write a conll file to a text file."""
-    with open(outpath, 'w') as f:
+    with open(outpath, 'w', encoding='utf-8') as f:
         for path in paths:
             for sent in pyconll.iter_from_file(path):
                 txt = []

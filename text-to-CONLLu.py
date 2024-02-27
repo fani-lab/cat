@@ -129,4 +129,16 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    datasets = []
+    for d in ['lowresource-2015', 'lowresource-2016', 'lowresource-2014l', 'lowresource-2014r']: # , 'googletranslate-SemEval-14-L']:
+        for l in ['lao_Laoo', 'san_Deva']:
+            if l == 'eng':
+                datasets.append(f'{d}')
+            else:
+                datasets.append(f'{d}-{l}')
+    for dataset in datasets:
+        for f in range(5):
+            sys.argv.append(f'data/{dataset}/train/{f}/train.txt')
+            sys.argv.append(f'data/{dataset}/train/{f}/input.conllu')
+            main()
+            del sys.argv[-2:]

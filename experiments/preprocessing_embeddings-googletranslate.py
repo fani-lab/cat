@@ -12,9 +12,9 @@ logging.basicConfig(level=logging.INFO)
 
 if __name__ == "__main__":
     datasets = []
-    for d in ['lowresource-2014r']:
-        for l in ['lao_Laoo', 'san_Deva']:
-            if l == 'eng':
+    for d in ['googletranslate-twitter']:
+        for l in ['en', 'fa', 'zh-CN', 'de', 'ar', 'fr', 'es', 'fa.zh-CN.de.ar.fr.es']:
+            if l == 'en':
                 datasets.append(f'{d}')
             else:
                 datasets.append(f'{d}-{l}')
@@ -33,7 +33,7 @@ if __name__ == "__main__":
                          window=10,
                          vector_size=200,
                          min_count=2,
-                         epochs=200,
+                         epochs=40,
                          workers=10)
             embedding_path = f"../embeddings/{fold_path}"
             if not os.path.isdir(embedding_path):
