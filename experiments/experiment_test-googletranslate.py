@@ -29,15 +29,15 @@ if __name__ == "__main__":
     for m in metrics:
         metrics_set.add(f'{m}_{topkstr}')
     datasets = []
-    for d in ['lowresource-2014r']:
-        for l in ['lao_Laoo', 'san_Deva']:
-            if l == 'eng':
+    for d in ['googletranslate-twitter']:  # 'googletranslate-SemEval-14-L'
+        for l in ['en', 'fa', 'zh-CN', 'de', 'ar', 'fr', 'es', 'fa.zh-CN.de.ar.fr.es']: #
+            if l == 'en':
                 datasets.append(f'{d}')
             else:
                 datasets.append(f'{d}-{l}')
     for dataset in datasets:
 
-        output_path = f'../output-low-resource/{dataset}'
+        output_path = f'../output-googletranslate/{dataset}'
         if not os.path.isdir(output_path):
             os.makedirs(output_path)
 
